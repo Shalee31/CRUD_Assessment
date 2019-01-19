@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Student Database</title>
+<link rel = " stylesheet " href= " https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css ">
+<script src = " https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js "></script>
+<style>
+	table {
+		width: 100% !important;
+		margin-left: 20px;
+		text-align:center;
+	}
+	th {
+		text-align:center;
+	}
+</style>
+</head>
+<body>
+	<div class="well well-lg">
+		<div class="row">
+			<div class="col-sm-4"><h1> Student Database</h1></div>
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4"><br>
+				<p class="text-center">
+					<a href="/add_student" type="button" class="btn btn-primary">
+						<span class="glyphicon glyphicon-plus">
+						</span> Add New Student
+					</a>
+					<a href="/add_class" type="button" class="btn btn-primary">
+						<span class="glyphicon glyphicon-plus">
+						</span> Add New Class 
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="container" style="min-height:100% width:80%">
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+	</div>
+	{% block body %} {% endblock %}
+</body>
+</html>

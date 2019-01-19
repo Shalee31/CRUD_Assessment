@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+	<div class="container" style="margin-left:500px; ">
+		<form action="#">
+			<div class="col-xs-4">
+				<label for="student_id">Student Id:</label>
+				<input type="text" class="form-control" id="student_id"><br>	
+				<label for="name">Student Name:</label>
+				<input type="text" class="form-control" id="name"><br>		
+				<label for="class_id">Class Id:</label>
+				<input type="text" class="form-control" id="class_id"><br>	
+				<label for="class_leader">Class Leader:</label>
+				<input type="text" class="form-control" id="class_leader"><br>					
+				<a type="button" href = "/db_edit" class="btn btn-primary btn-md text-center" style="width:150px; margin-left:100px; ">Save</a>
+			</div>		
+		</form>	 
+	</div>
+{% endblock %}
