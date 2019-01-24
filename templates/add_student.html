@@ -1,19 +1,30 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-	<div class="container" style="margin-left:500px; ">
-		<form action="/db_student">
-			<div class="col-xs-4">
-				<label for="student_id">Student Id:</label>
-				<input type="text" class="form-control" id="student_id"><br>	
-				<label for="student_name">Student Name:</label>
-				<input type="text" class="form-control" id="student_name"><br>		
-				<label for="class_id">Class Id:</label>
-				<input type="text" class="form-control" id="class_id"><br>	
-				<label for="class_leader">Class Leader:</label>
-				<input type="text" class="form-control" id="class_leader"><br>					
-				<button type="submit" class="btn btn-primary btn-md text-center" style="width:150px; margin-left:100px; ">Save</button>
-			</div>		
-		</form>	 
-	</div>
+<form action="/db_student" method="POST">
+    <div class="col-xs-5">
+        <label>Student Name:</label>
+        <input type="text" class="form-control" name="student_name" required><br>
+        <label>Class Name:</label>
+        <div class="form-group">
+            <select class="form-control" name="class_id">
+                {% for class in class_details %}
+                <option value="{{class.class_id}}">
+                    {{class.class_name}}
+                </option>
+                {% endfor %}
+            </select><br>
+        </div>
+        <label>Class Leader :</label>
+        <div class="form-group">
+            <select class="form-control" name="class_leader">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-md text-center" style="width:40%; margin-left:28%;">Save
+        </button>
+    </div>
+</form>
 {% endblock %}

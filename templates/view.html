@@ -1,34 +1,57 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-	<div class="container"style="margin-left:500px; ">         
-		<h3 style="margin-left:70px;">Student Details!!</h3><br>
-		<table class="table table-striped" style ="width:350px;">
-		<dl>
-			<tr>
-				<td><dt>Student Id: </dt></td>
-				<td><dd></dd></td>
-			</tr>
-			<tr>
-				<td><dt>Student Name: </dt></td>
-				<td><dd></dd></td>
-			</tr>
-			<tr><td><dt>Class Id: </dt></td>
-				<td><dd></dd></td>
-			</tr>
-			<tr><td><dt>Class Name: </dt></td>
-				<td><dd></dd></td>
-			</tr>
-			<tr><td><dt>Class Leader: </dt></td>
-				<td><dd></dd></td>
-			</tr>
-			<tr><td><dt>Created On:</dt></td>
-				<td><dd></dd></td>
-			</tr>
-			<tr><td><dt>Updated On: </dt></td>
-				<td><dd></dd></td>
-			</tr>
-		</dl>
-		</table>
-	</div>
+<h3 style="margin-left:70px;">Student Details!!</h3><br>
+<table class="table table-striped" style="width:350px;">
+    {% for student, class in data %}
+    <dl>
+        <tr>
+            <td>
+                <dt>Student Name:</dt>
+            </td>
+            <td>
+                <dd>{{student.student_name}}</dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>Class Name:</dt>
+            </td>
+            <td>
+                <dd>{{class.class_name}}</dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>Class Leader:</dt>
+            </td>
+            <td>
+                <dd>
+                    {% if class.class_leader %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>Created On:</dt>
+            </td>
+            <td>
+                <dd>{{student.created_on}}</dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>Updated On:</dt>
+            </td>
+            <td>
+                <dd>{{student.updated_on}}</dd>
+            </td>
+        </tr>
+    </dl>
+    {% endfor %}
+</table>
 {% endblock %}

@@ -1,15 +1,13 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-	<div class="container" style="margin-left:500px; ">
-		<form action="#">
-			<div class="col-xs-4">
-				<label for="class_id">Class Id:</label>
-				<input type="text" class="form-control" id="class_id"><br>		
-				<label for="name">Class Name:</label>
-				<input type="text" class="form-control" id="name"><br>	 
-				<a href="/db_class" type="button" class="btn btn-primary btn-md text-center" style="width:150px; margin-left:100px;">Save</a>
-			</div>		
-		</form>	 
-	</div>
+<form action="/db_class" method="POST">
+    <div class="col-xs-5">
+        <label>Class Name:</label>
+        <input type="text" class="form-control" name="class_name" required><br>
+        <button href="" type="submit" class="btn btn-primary btn-md text-center"
+                style="width:40%; margin-left:28%;">Save
+        </button>
+    </div>
+</form>
 {% endblock %}
