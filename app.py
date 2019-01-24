@@ -100,13 +100,11 @@ def db_edit():
             flash('Please enter all fields', 'error')
         else:
             id = request.form['student_id']
-            print(id)
             class_leader = request.form['class_leader']
             student = Student.query.filter_by(student_id=id).first()
             class_details = Classes.query.filter_by(class_id=student.class_id).first()
 
             if class_leader == 'Yes' and class_details.class_leader != id:
-                print("hello")
                 student.student_name = request.form['student_name']
                 student.class_id = request.form['class_id']
                 student.updated_on = db.func.now()
@@ -117,7 +115,6 @@ def db_edit():
                 db.session.commit()
                 flash('Student record updated successfully.')
             elif class_leader == 'No' and class_details.class_leader == id:
-                print("hi")
                 student.student_name = request.form['student_name']
                 student.class_id = request.form['class_id']
                 student.updated_on = db.func.now()
