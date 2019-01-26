@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<form action="/db_edit" method="POST">
+    <div class="col-xs-5">
+        {% for student, class1 in data %}
+        <input type="hidden" name="student_id" value="{{student.student_id}}">
+        <label>Student Name:</label>
+        <input type="text" class="form-control" name="student_name" value="{{student.student_name}}" required><br>
+        <label>Class Name:</label>
+        <div class="form-group">
+            <select class="form-control" name="class_id">
+                <option value="{{class1.class_id}}">
+                    {{class1.class_name}}
+                </option>
+                {% for class in class_details %}
+                {% if class.class_id != class1.class_id %}
+                <option value="{{class.class_id}}">
+                    {{class.class_name}}
+                </option>
+                {% endif %}
+                {% endfor %}
+            </select><br>
+        </div>
+        <label>Class Leader :</label>
+        <div class="form-group">
+            <select class="form-control" name="class_leader">
+                {% if class1.class_leader == student.student_id %}
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                {% else %}
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                {% endif %}
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-md text-center" style="width:40%; margin-left:28%;">Save
+        </button>
+        {% endfor %}
+    </div>
+</form>
+{% endblock %}
