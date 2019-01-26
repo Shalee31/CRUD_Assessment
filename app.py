@@ -62,7 +62,7 @@ def add_class():
     return render_template('add_class.html')
 
 
-@APP.route('/view/<string:id>')
+@APP.route('/view/<string:s_id>')
 def view(s_id):
     """ view function with route to page displaying particular student details """
     data = DB.session.query(Student, Classes).filter\
@@ -70,7 +70,7 @@ def view(s_id):
     return render_template('view.html', data=data)
 
 
-@APP.route('/edit/<string:id>')
+@APP.route('/edit/<string:s_id>')
 def edit(s_id):
     """ edit function with route to page allowing updation of particular student details """
     data = DB.session.query(Student, Classes).filter(Student.class_id == Classes.class_id).filter(
@@ -78,7 +78,7 @@ def edit(s_id):
     return render_template('edit.html', data=data, class_details=Classes.query.all())
 
 
-@APP.route('/delete/<string:id>')
+@APP.route('/delete/<string:s_id>')
 def delete(s_id):
     """ delete function with route to page allowing deletion of particular student details """
     student = Student.query.filter_by(student_id=s_id).first()
